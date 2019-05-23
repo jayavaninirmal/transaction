@@ -3,9 +3,23 @@ Transaction web project to calculate relative account balance for the given acco
 
 - This is a servlet based web project. It uses MySQL database to store the transactions.
 
-- After configuring the WAR in Web Server, start the server.
+- Use the following query to create TRANSACTION table in MySQL:
 
-- While starting up, the application imports the transactions data from transactions.csv into MySQL database.
+CREATE TABLE TRANSACTION (
+TransactionId varchar(255) PRIMARY KEY,
+FromAccountId varchar(100) NOT NULL,
+ToAccountId varchar(100) NOT NULL,
+CreateAt datetime NOT NULL,
+Amount double NOT NULL,
+TransactionType varchar(20) NOT NULL,
+relatedTransaction varchar(255)
+);
+
+- Modify the Database configurations such as JDBC Url, Database name, Username and Password in PersistenceHelper.java
+
+- Configure the WAR in Web Server and start the server.
+
+- While starting up, the application imports the transactions data from transactions.csv into MySQL TRANSACTION table.
 
 - After server started, the user can visit the web page by accessing \<WebServerURL\>/transaction.
 
